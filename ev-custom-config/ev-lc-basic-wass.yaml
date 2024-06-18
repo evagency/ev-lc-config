@@ -1,0 +1,55 @@
+version: 1.1.2
+
+cache: true
+
+# INTERFACE CUSTOMIZATION
+interface:
+  privacyPolicy:
+    externalUrl: "https://librechat.ai/privacy-policy"
+    openNewTab: true
+  termsOfService:
+    externalUrl: "https://librechat.ai/tos"
+    openNewTab: true
+
+registration:
+  # Available: ["discord", "facebook", "github", "google", "openid"]
+  socialLogins: ["google"]
+
+# FILE CONFIGURATION
+fileConfig:
+  endpoints:
+    assistants:
+      fileLimit: 5
+      fileSizeLimit: 10 # Maximum size for an individual file in MB
+      totalSizeLimit: 50 # Maximum total size for all files in a single request in MB
+      supportedMimeTypes:
+        - "image/.*"
+        - "application/pdf"
+        - "application/json"
+        - "application/xml"
+        - "application/yaml"
+        - "text/plain"
+        - "text/markdown"
+        - "text/csv"
+        - "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        - "application/msword"
+    openAI:
+      disabled: false # Disables file uploading to the OpenAI endpoint
+    default:
+      totalSizeLimit: 20
+rateLimits:
+  fileUploads:
+    ipMax: 100
+    ipWindowInMinutes: 60 # Rate limit window for file uploads per IP
+    userMax: 50
+    userWindowInMinutes: 60 # Rate limit window for file uploads per user
+
+# CUSTOM ENDPOINTS
+endpoints:
+  assistants:
+    disableBuilder: false # Disable Assistants Builder Interface by setting to `true`
+    pollIntervalMs: 750 # Polling interval for checking assistant updates
+    timeoutMs: 180000 # Timeout for assistant operations
+    # Should only be one or the other, either `supportedIds` or `excludedIds`
+    # supportedIds: [""]
+    excludedIds: ["asst_excludedAssistantId"]
