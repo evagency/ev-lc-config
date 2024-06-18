@@ -1,6 +1,3 @@
-./ev-services/*
-./ev-services/compose/*
+ev-services/*
 
 *.env*
-ev-services/compose/docker-compose.override.yml.bak.jun18
-ev-services/compose/docker-compose.override.yml.bak.feb24
