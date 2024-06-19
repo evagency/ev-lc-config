@@ -15,6 +15,26 @@ registration:
   # Available: ["discord", "facebook", "github", "google", "openid"]
   socialLogins: ["google"]
 
+# TEXT TO SPEECH
+tts:
+  openai:
+    apiKey: "${TTS_API_KEY}"
+    model: "tts-1"
+    voice: ["alloy", "echo", "fable", "onyx", "nova", "shimmer"]
+# ELEVEN LABS ONLY
+#   voice_settings:
+#     similarity_boost: ''
+#     stability: ''
+#     style: ''
+#     use_speaker_boost:
+#   pronunciation_dictionary_locators: ['']
+
+# SPEECH TO TEXT
+stt:
+  openai:
+    apiKey: "${STT_API_KEY}"
+    model: "whisper-1"
+
 # FILE CONFIGURATION
 fileConfig:
   endpoints:
@@ -37,6 +57,8 @@ fileConfig:
       disabled: false # Disables file uploading to the OpenAI endpoint
     default:
       totalSizeLimit: 20
+
+# RATE LIMITING
 rateLimits:
   fileUploads:
     ipMax: 100
