@@ -20,7 +20,7 @@ tts:
   openai:
     apiKey: "${TTS_API_KEY}"
     model: "tts-1"
-    voice: ["alloy", "echo", "fable", "onyx", "nova", "shimmer"]
+    voices: ["alloy", "echo", "fable", "onyx", "nova", "shimmer"]
 # ELEVEN LABS ONLY
 #   voice_settings:
 #     similarity_boost: ''
