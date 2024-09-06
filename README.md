@@ -1,11 +1,11 @@
 # LibreChat Config Files aka `librechat.yaml` Collection
-See the Custom Configuration Guide for more information: [LibreChat Custom Config Guide](https://docs.librechat.ai/install/configuration/custom_config.html)
+See the Custom Configuration Guide for more information: [LibreChat Custom Config Guide](https://www.librechat.ai/docs/configuration/librechat_yaml/setup)
 
 ## How to use
 - Choose a file that corresponds to your needs
 - Copy its **raw** URL (provided below)
 - In your LibreChat `.env` file, add `CONFIG_PATH="https://raw-config-file-url/librechat.yaml"`
-  - ⚠️ Replace the URL with the one provided below!
+  - ⚠️ Replace the URL with one provided below!
 
 ## Contributions
 Contributions are welcome! Some files are more restrictive than others. Feel free to ask @fuegovic or @Berry here or on Discord if you have any questions or doubts.
@@ -33,20 +33,24 @@ Basic configuration where model fetching is enabled on all endpoints that suppor
   ANYSCALE_API_KEY=
   APIPIE_API_KEY=
   COHERE_API_KEY=
+  DEEPSEEK_API_KEY=
+  DATABRICKS_API_KEY=
   FIREWORKS_API_KEY=
   GROQ_API_KEY=
+  HUGGINGFACE_TOKEN=
   MISTRAL_API_KEY=
   OPENROUTER_KEY=
   PERPLEXITY_API_KEY=
   SHUTTLEAI_API_KEY=
   TOGETHERAI_API_KEY=
+  UNIFY_API_KEY=
   ```
 
 ### `librechat-hf.yaml`
 Configuration used for the LibreChat Demo:
 <p align="left">
   <a href="https://demo.librechat.cfd/">
-      <img src="https://github.com/fuegovic/lc-config-yaml/assets/32828263/d3a1e88f-fce0-4a8e-8c1d-5901a3e1c2dd">
+      <img src="https://github.com/LibreChat-AI/librechat-config-yaml/assets/32828263/d3a1e88f-fce0-4a8e-8c1d-5901a3e1c2dd">
   <img href="https://demo.librechat.cfd/">
   </a>
 </p>
@@ -57,7 +61,7 @@ Configuration used for the LibreChat Demo:
 - Fetch: false
 - .env config:
   ```yaml
-  CONFIG_PATH=https://raw.githubusercontent.com/fuegovic/lc-config-yaml/main/librechat-hf.yaml
+  CONFIG_PATH=https://raw.githubusercontent.com/LibreChat-AI/librechat-config-yaml/main/librechat-hf.yaml
   ```
 
 ### `librechat-aio.yaml`
@@ -69,7 +73,7 @@ Same configuration used for the LibreChat Demo, but with firebase disable:
 - Fetch: false
 - .env config:
   ```yaml
-  CONFIG_PATH=https://raw.githubusercontent.com/fuegovic/lc-config-yaml/main/librechat-aio.yaml
+  CONFIG_PATH=https://raw.githubusercontent.com/LibreChat-AI/librechat-config-yaml/main/librechat-aio.yaml
   ```
 
 ### `librechat-rw.yaml`
@@ -86,17 +90,21 @@ Configuration used for the Railway one-click install template:
 - Fetch: false
 - .env config:
   ```yaml
-  CONFIG_PATH=https://raw.githubusercontent.com/fuegovic/lc-config-yaml/main/librechat-rw.yaml
+  CONFIG_PATH=https://raw.githubusercontent.com/LibreChat-AI/librechat-config-yaml/main/librechat-rw.yaml
   ANYSCALE_API_KEY=
   APIPIE_API_KEY=
   COHERE_API_KEY=
+  DEEPSEEK_API_KEY=
+  DATABRICKS_API_KEY=
   FIREWORKS_API_KEY=
   GROQ_API_KEY=
+  HUGGINGFACE_TOKEN=
   MISTRAL_API_KEY=
   OPENROUTER_KEY=
   PERPLEXITY_API_KEY=
   SHUTTLEAI_API_KEY=
   TOGETHERAI_API_KEY=
+  UNIFY_API_KEY=
   ```
 - Note:
   - Accepts `model` updates
@@ -109,17 +117,21 @@ Configuration used for the Railway one-click install template:
 - Fetch: false
 - .env config:
   ```yaml
-  CONFIG_PATH=https://raw.githubusercontent.com/fuegovic/lc-config-yaml/main/librechat-f.yaml
+  CONFIG_PATH=https://raw.githubusercontent.com/LibreChat-AI/librechat-config-yaml/main/librechat-f.yaml
   ANYSCALE_API_KEY=
   APIPIE_API_KEY=
   COHERE_API_KEY=
+  DEEPSEEK_API_KEY=
+  DATABRICKS_API_KEY=
   FIREWORKS_API_KEY=
   GROQ_API_KEY=
+  HUGGINGFACE_TOKEN=
   MISTRAL_API_KEY=
   OPENROUTER_KEY=
   PERPLEXITY_API_KEY=
   SHUTTLEAI_API_KEY=
   TOGETHERAI_API_KEY=
+  UNIFY_API_KEY=
   ```
 
 ### `librechat-test.yaml`
@@ -141,6 +153,9 @@ Configuration used for the Railway one-click install template:
 #### Cohere
 - https://dashboard.cohere.com/api-keys
 
+#### DeepSeek
+- https://platform.deepseek.com/api_keys
+
 #### FireworksAI
 - https://fireworks.ai/
 
@@ -154,10 +169,13 @@ Configuration used for the Railway one-click install template:
 - https://openrouter.ai/
 
 #### ShuttleAI
-- https://shuttleai.app/keys
+- https://shuttleai.com/keys
 
 #### TogetherAI
 - https://www.together.ai/
+
+#### Unify
+- https://unify.ai/
 
 ---
 
@@ -170,10 +188,6 @@ Configuration used for the Railway one-click install template:
 #### FreeGPT-4
 - https://discord.com/invite/gpt4
 - Get API key on discord with the command `/key`
-
-#### Hyzenberg
-- https://discord.gg/ECUEFQzATa
-- Get API key on discord with the command `/key get`
 
 #### Mandrill
 - https://discord.mandrillai.tech
