@@ -40,7 +40,7 @@ fileConfig:
   endpoints:
     assistants:
       fileLimit: 5
-      fileSizeLimit: 10 # Maximum size for an individual file in MB
+      fileSizeLimit: 20 # Maximum size for an individual file in MB
       totalSizeLimit: 50 # Maximum total size for all files in a single request in MB
       supportedMimeTypes:
         - "image/.*"
