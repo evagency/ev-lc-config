@@ -1,4 +1,4 @@
-version: 1.1.2
+version: 1.1.6
 
 cache: true
 
@@ -20,7 +20,7 @@ fileConfig:
   endpoints:
     assistants:
       fileLimit: 5
-      fileSizeLimit: 20 # Maximum size for an individual file in MB
+      fileSizeLimit: 30 # Maximum size for an individual file in MB
       totalSizeLimit: 50 # Maximum total size for all files in a single request in MB
       supportedMimeTypes:
         - "image/.*"
@@ -67,18 +67,24 @@ endpoints:
     excludedIds: ["asst_excludedAssistantId"]
 
   custom:
-    #groq
+    # groq
+    # Model list: https://console.groq.com/settings/limits
     - name: "groq"
-      apiKey: ${GROQ_API_KEY}
+      apiKey: "${GROQ_API_KEY}"
       baseURL: "https://api.groq.com/openai/v1/"
       models:
         default:
           [
-            "llama2-70b-4096",
+            "llama-3.1-405b-reasoning",
+            "llama-3.1-70b-versatile",
+            "llama-3.1-8b-instant",
+            "llama3-groq-70b-8192-tool-use-preview",
+            "llama3-groq-8b-8192-tool-use-preview",
             "llama3-70b-8192",
             "llama3-8b-8192",
             "mixtral-8x7b-32768",
             "gemma-7b-it",
+            "gemma2-9b-it",
           ]
         fetch: false
       titleConvo: true
@@ -303,23 +309,99 @@ endpoints:
       modelDisplayLabel: "OpenRouter"
 
     # Preplexity
+    # Model list: https://docs.perplexity.ai/docs/model-cards
     - name: "Perplexity"
       apiKey: "${PERPLEXITY_API_KEY}"
       baseURL: "https://api.perplexity.ai/"
       models:
         default:
           [
-            "mistral-7b-instruct",
-            "sonar-small-chat",
-            "sonar-small-online",
-            "sonar-medium-chat",
-            "sonar-medium-online",
+            "llama-3.1-sonar-small-128k-chat",
+            "llama-3.1-sonar-small-128k-online",
+            "llama-3.1-sonar-large-128k-chat",
+            "llama-3.1-sonar-large-128k-online",
+            "llama-3.1-sonar-huge-128k-online",
+            "llama-3.1-8b-instruct",
+            "llama-3.1-70b-instruct",
           ]
         fetch: false # fetching list of models is not supported
       titleConvo: true
-      titleModel: "sonar-medium-chat"
+      titleModel: "llama-3.1-sonar-small-128k-chat"
       summarize: false
-      summaryModel: "sonar-medium-chat"
+      summaryModel: "llama-3.1-sonar-small-128k-chat"
       forcePrompt: false
       dropParams: ["stop", "frequency_penalty"]
       modelDisplayLabel: "Perplexity"
+
+    # deepseek
+    # https://platform.deepseek.com/api_keys
+    # Model list: https://platform.deepseek.com/api-docs/pricing
+    - name: "deepseek"
+      apiKey: "${DEEPSEEK_API_KEY}"
+      baseURL: "https://api.deepseek.com"
+      models:
+        default: ["deepseek-chat", "deepseek-coder"]
+        fetch: false
+      titleConvo: true
+      titleModel: "deepseek-chat"
+      summarize: false
+      summaryModel: "deepseek-chat"
+      forcePrompt: false
+      modelDisplayLabel: "DeepSeek"
+
+    # Fireworks.ai
+    # Models: https://fireworks.ai/models?show=Serverless
+    - name: "Fireworks"
+      apiKey: "${FIREWORKS_API_KEY}"
+      baseURL: "https://api.fireworks.ai/inference/v1"
+      models:
+        default:
+          [
+            "accounts/fireworks/models/devashisht-test-v2",
+            "accounts/fireworks/models/dt-fc-rc-v1",
+            "accounts/fireworks/models/firefunction-v1",
+            "accounts/fireworks/models/firefunction-v2",
+            "accounts/fireworks/models/firellava-13b",
+            "accounts/devashisht-72fdad/models/function-calling-v11",
+            "accounts/fireworks/models/fw-function-call-34b-v0",
+            "accounts/stability/models/japanese-stablelm-instruct-beta-70b",
+            "accounts/stability/models/japanese-stablelm-instruct-gamma-7b",
+            "accounts/fireworks/models/japanese-stable-vlm",
+            "accounts/fireworks/models/gemma2-9b-it",
+            "accounts/fireworks/models/llama-v3p1-405b-instruct",
+            "accounts/fireworks/models/llama-v3p1-70b-instruct",
+            "accounts/fireworks/models/llama-v3p1-8b-instruct",
+            "accounts/fireworks/models/llama-v3-70b-instruct",
+            "accounts/fireworks/models/llama-v3-70b-instruct-hf",
+            "accounts/fireworks/models/llama-v3-8b-hf",
+            "accounts/fireworks/models/llama-v3-8b-instruct",
+            "accounts/fireworks/models/llama-v3-8b-instruct-hf",
+            "accounts/fireworks/models/llama-v2-13b-chat",
+            "accounts/fireworks/models/llama-v2-13b-code-instruct",
+            "accounts/fireworks/models/llama-v2-34b-code-instruct",
+            "accounts/fireworks/models/llama-v2-70b-chat",
+            "accounts/fireworks/models/llama-v2-70b-code-instruct",
+            "accounts/fireworks/models/llama-v2-7b-chat",
+            "accounts/fireworks/models/deepseek-coder-v2-instruct",
+            "accounts/fireworks/models/deepseek-coder-v2-lite-instruct",
+            "accounts/fireworks/models/llava-v15-13b-fireworks",
+            "accounts/fireworks/models/mistral-7b-instruct-4k",
+            "accounts/dev-e24710/models/mistral-spellbound-format",
+            "accounts/fireworks/models/mixtral-8x22b-instruct",
+            "accounts/fireworks/models/mixtral-8x7b-instruct",
+            "accounts/fireworks/models/mixtral-8x7b-instruct-hf",
+            "accounts/fireworks/models/new-mixtral-chat",
+            "accounts/fireworks/models/qwen-14b-chat",
+            "accounts/fireworks/models/qwen-1-8b-chat",
+            "accounts/fireworks/models/qwen-72b-chat",
+            "accounts/stability/models/stablelm-zephyr-3b",
+            "accounts/fireworks/models/yi-34b-200k-capybara",
+          ]
+        fetch: false
+      titleConvo: true
+      titleModel: "accounts/fireworks/models/llama-v2-7b-chat"
+      summarize: false
+      summaryModel: "accounts/fireworks/models/llama-v2-7b-chat"
+      forcePrompt: false
+      modelDisplayLabel: "Fireworks"
+      dropParams: ["user"]
