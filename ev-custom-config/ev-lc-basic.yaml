@@ -53,3 +53,10 @@ rateLimits:
     ipWindowInMinutes: 60 # Rate limit window for file uploads per IP
     userMax: 50
     userWindowInMinutes: 60 # Rate limit window for file uploads per user
+
+  bedrock:
+    availableRegions:
+      - "us-west-2"
+      - "us-east-1"
+    streamRate: 35
+    titleModel: 'anthropic.claude-3-haiku-20240307-v1:0'
