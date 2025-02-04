@@ -66,12 +66,12 @@ endpoints:
     # supportedIds: [""]
     excludedIds: ["asst_excludedAssistantId"]
 
-  bedrock:
-    availableRegions:
-      - "us-west-2"
-      - "us-east-1"
-    streamRate: 35
-    titleModel: 'anthropic.claude-3-haiku-20240307-v1:0'
+  # bedrock:
+  #   availableRegions:
+  #     - "us-west-2"
+  #     - "us-east-1"
+  #   streamRate: 35
+  #   titleModel: 'anthropic.claude-2-haiku-20240307-v1:0'
 
   custom:
     # groq
