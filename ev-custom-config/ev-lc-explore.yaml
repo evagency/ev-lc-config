@@ -58,6 +58,13 @@ rateLimits:
 
 # CUSTOM ENDPOINTS
 endpoints:
+  agents:
+    recursionLimit: 50
+    disableBuilder: false
+    # (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
+    capabilities: ["execute_code", "file_search", "actions", "tools"]
+
+    
   assistants:
     disableBuilder: false # Disable Assistants Builder Interface by setting to `true`
     pollIntervalMs: 750 # Polling interval for checking assistant updates
