@@ -20,7 +20,7 @@ fileConfig:
   endpoints:
     assistants:
       fileLimit: 5
-      fileSizeLimit: 10 # Maximum size for an individual file in MB
+      fileSizeLimit: 30 # Maximum size for an individual file in MB
       totalSizeLimit: 50 # Maximum total size for all files in a single request in MB
       supportedMimeTypes:
         - "image/.*"
@@ -31,12 +31,23 @@ fileConfig:
         - "text/plain"
         - "text/markdown"
         - "text/csv"
-        - "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         - "application/msword"
+        - "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        - "application/vnd.ms-excel"
+        - "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        - "application/vnd.ms-powerpoint"
+        - "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        - "application/vnd.google-apps.document"
+        - "application/vnd.google-apps.spreadsheet"
+        - "application/vnd.google-apps.presentation"
+        - "application/vnd.google-apps.fusiontable"
+        - "application/vnd.google-apps.drawing"
+        - "application/vnd.google-apps.audio"
     openAI:
       disabled: false # Disables file uploading to the OpenAI endpoint
     default:
       totalSizeLimit: 20
+      
 rateLimits:
   fileUploads:
     ipMax: 100
@@ -46,6 +57,12 @@ rateLimits:
 
 # CUSTOM ENDPOINTS
 endpoints:
+  agents:
+    recursionLimit: 50
+    disableBuilder: false
+    # (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
+    capabilities: ["execute_code", "file_search", "actions", "tools"]
+    
   assistants:
     disableBuilder: false # Disable Assistants Builder Interface by setting to `true`
     pollIntervalMs: 750 # Polling interval for checking assistant updates
