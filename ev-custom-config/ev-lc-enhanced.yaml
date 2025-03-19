@@ -1,0 +1,98 @@
+version: 1.1.2
+
+cache: true
+
+# INTERFACE CUSTOMIZATION
+interface:
+  privacyPolicy:
+    externalUrl: "https://librechat.ai/privacy-policy"
+    openNewTab: true
+  termsOfService:
+    externalUrl: "https://librechat.ai/tos"
+    openNewTab: true
+
+registration:
+  # Available: ["discord", "facebook", "github", "google", "openid"]
+  socialLogins: ["google"]
+
+# FILE CONFIGURATION
+fileConfig:
+  endpoints:
+    assistants:
+      fileLimit: 5
+      fileSizeLimit: 30 # Maximum size for an individual file in MB
+      totalSizeLimit: 50 # Maximum total size for all files in a single request in MB
+      supportedMimeTypes:
+        - "image/.*"
+        - "application/pdf"
+        - "application/json"
+        - "application/xml"
+        - "application/yaml"
+        - "text/plain"
+        - "text/markdown"
+        - "text/csv"
+        - "application/msword"
+        - "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        - "application/vnd.ms-excel"
+        - "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        - "application/vnd.ms-powerpoint"
+        - "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        - "application/vnd.google-apps.document"
+        - "application/vnd.google-apps.spreadsheet"
+        - "application/vnd.google-apps.presentation"
+        - "application/vnd.google-apps.fusiontable"
+        - "application/vnd.google-apps.drawing"
+        - "application/vnd.google-apps.audio"
+    openAI:
+      disabled: false # Disables file uploading to the OpenAI endpoint
+    default:
+      totalSizeLimit: 20
+      
+rateLimits:
+  fileUploads:
+    ipMax: 100
+    ipWindowInMinutes: 60 # Rate limit window for file uploads per IP
+    userMax: 50
+    userWindowInMinutes: 60 # Rate limit window for file uploads per user
+
+# CUSTOM ENDPOINTS
+endpoints:
+  agents:
+    recursionLimit: 50
+    disableBuilder: false
+    # (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
+    capabilities: ["execute_code", "file_search", "actions", "tools"]
+    
+  assistants:
+    disableBuilder: false # Disable Assistants Builder Interface by setting to `true`
+    pollIntervalMs: 750 # Polling interval for checking assistant updates
+    timeoutMs: 180000 # Timeout for assistant operations
+    # Should only be one or the other, either `supportedIds` or `excludedIds`
+    # supportedIds: [""]
+    excludedIds: ["asst_excludedAssistantId"]
+  
+  custom:
+    # groq
+    # Model list: https://console.groq.com/settings/limits
+    - name: "groq"
+      apiKey: "${GROQ_API_KEY}"
+      baseURL: "https://api.groq.com/openai/v1/"
+      models:
+        default:
+          [
+            "llama-3.3-70b-versatile",
+            "llama-3.1-405b-reasoning",
+            "llama-3.1-70b-versatile",
+            "llama-3.1-8b-instant",
+            "llama3-70b-8192",
+            "llama3-8b-8192",
+            "mixtral-8x7b-32768",
+            "gemma2-9b-it",
+            "deepseek-r1-distill-llama-70b",
+            "llama-3.2-1b-preview",
+            "llama-3.2-3b-preview"
+          ]
+        fetch: false
+      titleConvo: true
+      titleModel: "mixtral-8x7b-32768"
+      modelDisplayLabel: "groq"    
