@@ -383,7 +383,7 @@ endpoints:
       apiKey: "${DEEPSEEK_API_KEY}"
       baseURL: "https://api.deepseek.com"
       models:
-        default: ["deepseek-chat", "deepseek-coder"]
+        default: ["deepseek-reasoner","deepseek-chat", "deepseek-coder"]
         fetch: false
       titleConvo: true
       titleModel: "deepseek-chat"
